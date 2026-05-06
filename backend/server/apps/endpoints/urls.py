@@ -1,4 +1,5 @@
-from django.conf.urls import url, include
+from django.urls import path, include
+from django.urls import re_path as url
 from rest_framework.routers import DefaultRouter
 
 from apps.endpoints.views import EndpointViewSet
@@ -17,7 +18,7 @@ router.register(r"mlrequests", MLRequestViewSet, basename="mlrequests")
 router.register(r"abtests", ABTestViewSet, basename="abtests")
 
 urlpatterns = [
-    url(r"^api/v1/", include(router.urls)),
+    path("api/v1/", include(router.urls)),
     url(
         r"^api/v1/(?P<endpoint_name>.+)/predict$", PredictView.as_view(), name="predict"
     ),

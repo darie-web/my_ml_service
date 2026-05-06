@@ -1,11 +1,8 @@
-from django.conf.urls import url, include
 from django.contrib import admin
-from django.urls import path
-
-from apps.endpoints.urls import urlpatterns as endpoints_urlpatterns
+from django.urls import path, include
+from django.urls import re_path as url
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls),
+    url(r'^', include('apps.endpoints.urls')),
 ]
-
-urlpatterns += endpoints_urlpatterns
